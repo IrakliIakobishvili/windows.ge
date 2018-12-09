@@ -1,0 +1,55 @@
+<div class="mapWindow" id="mapWindow">
+<div class="winIcons clearfix">
+	<div class="min"></div>
+    <div class="max"></div> 
+	<div class="x"></div>       
+</div>
+<!--<div class="iframe">-->
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2977.3583076614646!2d44.78142361412373!3d41.734363782378225!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x404472bfe22cd947%3A0x7c8b8459a6379aea!2sAkaki+Tsereteli+Ave%2C+Tbilisi!5e0!3m2!1sen!2sge!4v1470034312833" width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen ></iframe>
+<!--</div>-->
+</div>
+
+<script>
+	//$.getScript("js/scripts.js");
+	function winIcons() {
+	$('.x').click(function(){
+		var $class = $(this).parent().parent().attr('id');
+		$(this).parent().parent().hide();	
+		switch($class) {
+			case 'mapWindow':
+				$('.taskMap').hide();
+				break;
+			case 'edgeWindow':
+				$('.taskEdge').hide();
+				break;
+			case 'pictureWindow':
+				$('.taskPhotos').hide();
+				break;	
+		}
+	});
+	
+	
+	$('.min').click(function(){
+		$(this).parent().parent().hide();
+		var $class = $(this).parent().parent().attr('id');	
+		switch($class) {
+			case 'mapWindow':
+				$('.taskMap').show();
+				break;
+			case 'edgeWindow':
+				$('.taskEdge').show();
+				break;
+			case 'pictureWindow':
+				$('.taskPhotos').show();
+				break;
+		}
+	});
+	
+	$('.max').click(function(){
+		var $class = $(this).parent().parent().attr('id');
+			$('.'+$class+'').toggleClass('minimization');
+			$(this).toggleClass('maxToggle');
+	});
+}//winIcons
+winIcons();
+</script>

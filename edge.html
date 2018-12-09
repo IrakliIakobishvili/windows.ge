@@ -1,0 +1,118 @@
+<div class="edgeWindow" id="edgeWindow">
+<div class="winIcons clearfix z">
+	<div class="min"></div>
+    <div class="max"></div> 
+	<div class="x"></div>       
+</div>
+
+<div class="browser">
+	<div class="tab"><span>Works</span></div>
+    <div class="tab1"></div>
+    <div class="tabIcons"></div>
+    
+    <div class="area">
+    	<div class="websites clearfix">
+            <div class="site_1"></div>
+            <div class="site_2"></div>
+            <div class="site_3"></div>
+            <div class="site_4"></div>
+            <div class="site_5"></div>
+            <div class="site_6"></div>
+            <div class="site_7"></div>
+            <div class="site_8"></div>
+            <div class="site_9"></div>
+        </div>
+	</div><!--area-->
+</div><!--browser-->
+</div><!--edgeWindow-->
+
+<script>
+	//$.getScript("js/scripts.js");
+	function winIcons() {
+	$('.x').click(function(){
+		var $class = $(this).parent().parent().attr('id');
+		$(this).parent().parent().hide();	
+		switch($class) {
+			case 'mapWindow':
+				$('.taskMap').hide();
+				break;
+			case 'edgeWindow':
+				$('.taskEdge').hide();
+				break;
+			case 'pictureWindow':
+				$('.taskPhotos').hide();
+				break;	
+		}
+	});
+	
+	
+	$('.min').click(function(){
+		$(this).parent().parent().hide();
+		var $class = $(this).parent().parent().attr('id');	
+		switch($class) {
+			case 'mapWindow':
+				$('.taskMap').show();
+				break;
+			case 'edgeWindow':
+				$('.taskEdge').show();
+				break;
+			case 'pictureWindow':
+				$('.taskPhotos').show();
+				break;
+		}
+	});
+	
+	$('.max').click(function(){
+		var $class = $(this).parent().parent().attr('id');
+			$('.'+$class+'').toggleClass('minimization');
+			$(this).toggleClass('maxToggle');
+	});	
+	
+}//winIcons
+winIcons();
+
+
+function links() {	
+	$('.websites > div').click(function(){
+		switch($(this).attr('class')) {
+			case 'site_1':
+				var url = 'http://portfoliosite.ml/beautiful.ge'; 
+    			window.open(url, '_blank');
+			break;
+			case 'site_2':
+				var url = 'http://portfoliosite.ml/londa.ge'; 
+    			window.open(url, '_blank');
+			break;
+			case 'site_3':
+				var url = 'http://portfoliosite.ml/diving.ge'; 
+    			window.open(url, '_blank');
+			break;
+			case 'site_4':
+				var url = 'http://portfoliosite.ml/poco.ge'; 
+    			window.open(url, '_blank');
+			break;
+			case 'site_5':
+				var url = 'http://portfoliosite.ml/style.ge'; 
+    			window.open(url, '_blank');
+			break;
+			case 'site_6':
+				var url = 'http://portfoliosite.ml/vivus.ge'; 
+    			window.open(url, '_blank');
+			break;
+			case 'site_7':
+				var url = 'http://portfoliosite.ml/chating.ge'; 
+    			window.open(url, '_blank');
+			break;
+			case 'site_8':
+				var url = 'http://portfoliosite.ml/cube.ge'; 
+    			window.open(url, '_blank');
+			break;
+			case 'site_9':
+				var url = 'http://portfoliosite.ml/accordion.ge'; 
+    			window.open(url, '_blank');
+			break;
+		}
+	});
+}//links
+links();
+</script>

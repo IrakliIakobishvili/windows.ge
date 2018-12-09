@@ -1,0 +1,147 @@
+<div class="pictureWindow" id="pictureWindow">
+<div class="winIcons clearfix">
+	<div class="min"></div>
+    <div class="max"></div> 
+	<div class="x"></div>       
+</div>
+
+<!--<div class="simageTitle"></div>-->
+<div class="gallery">
+	<img class="mainImg" src="images/slider/1.jpg">
+</div>
+
+<div class="sliderToolCon">
+	<div class="sliderBg"></div>
+	<div class="sliderTool clearfix">
+	     <div class="leftSlider"></div>
+		 <div class="centerSlider"></div>
+   		 <div class="rightSlider"></div>
+	</div><!--sliderTool-->
+</div>
+</div><!--pictureWindow-->
+
+<script>
+	//$.getScript("js/scripts.js");
+	function winIcons() {
+	$('.x').click(function(){
+		var $class = $(this).parent().parent().attr('id');
+		$(this).parent().parent().hide();	
+		switch($class) {
+			case 'mapWindow':
+				$('.taskMap').hide();
+				break;
+			case 'edgeWindow':
+				$('.taskEdge').hide();
+				break;
+			case 'pictureWindow':
+				$('.taskPhotos').hide();
+				break;	
+		}
+	});
+	
+	
+	$('.min').click(function(){
+		$(this).parent().parent().hide();
+		var $class = $(this).parent().parent().attr('id');	
+		switch($class) {
+			case 'mapWindow':
+				$('.taskMap').show();
+				break;
+			case 'edgeWindow':
+				$('.taskEdge').show();
+				break;
+			case 'pictureWindow':
+				$('.taskPhotos').show();
+				break;
+		}
+	});
+	
+	$('.max').click(function(){
+		var $class = $(this).parent().parent().attr('id');
+			$('.'+$class+'').toggleClass('minimization');
+			$(this).toggleClass('maxToggle');
+	});	
+	
+}//winIcons
+winIcons();
+
+function slides() {
+	var i = 1;
+	var length = 27;
+	var $img = $('.mainImg');
+	
+	function next() {
+		if(i === length) {i = 0;}
+		i++;
+		$img.attr('src','images/slider/'+i+'.jpg'); 
+		if(i >= length) {i = 0;}
+	}
+	function prev() {
+		i--;
+		if(i <= 0) {i = length;}
+		$img.attr('src','images/slider/'+i+'.jpg'); 
+	}
+														
+	$('.rightSlider,.leftSlider').click(function(){
+		var $this = $(this).attr('class');	
+		switch($this) {
+			case 'rightSlider':
+				next();
+				break;
+			case 'leftSlider':
+				prev();
+				break;
+		}
+	});
+	
+	$(document).keyup(function(e){
+		if(e.keyCode == 37) {
+			prev();	
+		}
+	});
+	
+	$(document).keyup(function(e){
+		if(e.keyCode == 39) {
+			next();	
+		}
+	});
+	
+}//slides
+slides();
+
+
+function animateIcons() {
+	$('.rightSlider').on({
+		 mousedown: function(){
+			$(this).css({'background-position':'0px 17px'}); 
+		},
+		mouseup: function(){
+			$(this).css({'background-position':'1px 17px'}); 
+		}
+	});
+	
+	$('.leftSlider').on({
+		 mousedown: function(){
+			$(this).css({'background-position':'2px 17px'}); 
+		},
+		mouseup: function(){
+			$(this).css({'background-position':'1px 17px'}); 
+		}
+	});
+	
+	$('.centerSlider').click(function(){
+		$('.sliderToolCon').hide();
+		$('.gallery').css({'top':'0px','bottom':'0px','left':'0px','right':'0px'});	
+	});
+	
+	$(document).keyup(function(e){
+		if(e.keyCode == 27) {
+			$('.gallery').css({'top':'33px','bottom':'65px','left':'80px','right':'80px'});
+			$('.sliderToolCon').show();		
+		}
+	});
+	
+}//animateIcons
+animateIcons();
+	 
+</script>

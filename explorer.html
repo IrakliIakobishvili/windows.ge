@@ -1,0 +1,193 @@
+<div class="explorer" id="explorer">
+<div class="winIcons clearfix e">
+	<div class="min"></div>
+    <div class="max"></div> 
+	<div class="x"></div>       
+</div>
+
+
+<div class="explorerContainer">
+	<div class="mailDialog">
+    	<div class="mailChat">
+        	<p>Please, Enter your email to recive source code of websites!</p>
+            <input type="email" name="email" id="email" placeholder="Email">
+            <input type="submit" name="send" value="Send" id="send">
+            <div class="sent">Check your mail inbox!</div>
+        </div>
+    </div>
+	<div class="whiteBg"></div>
+    <div class="localDisk"></div>
+    <div class="sourceFile"></div>
+    <div class="Cdisk"></div>
+    <div class="back"></div>
+    <div class="desc"></div>
+</div>
+</div><!--explorer-->
+
+<script>
+	//$.getScript("js/scripts.js");
+	function winIcons() {
+	$('.x').click(function(){
+		var $class = $(this).parent().parent().attr('id');
+		$(this).parent().parent().hide();	
+		switch($class) {
+			case 'mapWindow':
+				$('.taskMap').hide();
+				break;
+			case 'edgeWindow':
+				$('.taskEdge').hide();
+				break;
+			case 'pictureWindow':
+				$('.taskPhotos').hide();
+				break;	
+			case 'explorer':
+				$('.taskPc').hide();
+				break;	
+		}
+	});
+	
+	
+	$('.min').click(function(){
+		$(this).parent().parent().hide();
+		var $class = $(this).parent().parent().attr('id');	
+		switch($class) {
+			case 'mapWindow':
+				$('.taskMap').show();
+				break;
+			case 'edgeWindow':
+				$('.taskEdge').show();
+				break;
+			case 'pictureWindow':
+				$('.taskPhotos').show();
+				break;
+			case 'explorer':
+				$('.taskPc').show();
+				break;
+		}
+	});
+	
+	$('.max').click(function(){
+		var $class = $(this).parent().parent().attr('id');
+			$('.'+$class+'').toggleClass('minimization');
+			$(this).toggleClass('maxToggle');
+	});	
+	
+}//winIcons
+winIcons();
+
+
+$('.localDisk').dblclick(function(){
+	$(this).hide();
+	$('.explorerContainer').addClass('sourseBg');
+	$('.sourceFile').show();
+	$('.Cdisk').hide();
+});
+
+
+/*$('.sourceFile').dblclick(function(){
+	window.open('http://windows.ge/files/SourceFiles.zip');	
+});*/
+
+$('.sourceFile').dblclick(function(){
+	$('.mailDialog').show();
+});
+	 
+$('.Cdisk').dblclick(function(){
+	document.getElementById('error').play();
+	$('.desctop').hide();
+	$('.login').hide();
+	$('.blueScreen').show();
+	
+	var index = 0;
+	function persent() {
+		$('.persent').text(index);	
+		if(index === 100) {
+			clearInterval(interval);
+			$('.blueScreen').hide();
+			$('.desctop').show();
+			$('.explorer').hide();
+			$('.taskPc,.taskEdge,.taskMap').hide();
+			document.getElementById("startUp").play();
+		}
+		index = index + 10;
+	}//persent
+	var interval = setInterval(persent,1000);
+});
+
+
+$('.back').click(function(){
+	$('.explorerContainer').removeClass('sourseBg');
+	$('.localDisk').show();
+	$('.Cdisk').show();
+	$('.sourceFile').hide();	
+});
+
+$('.desc').click(function(){
+	$('.explorer').hide();	
+	$('.taskPc').show();
+});
+
+
+
+/*-----------------------------Mail Box----------------------------*/
+function mailBox() {
+	var $send = $('#send');
+	var $emailField = $('#email');
+	var $dialog = $('.mailDialog');
+	$('.explorerContainer').click(function(){
+		$dialog.hide();
+	});
+	
+	$dialog.click(function(e){
+		e.stopPropagation();
+	});
+	
+	$send.on({ 
+		mousedown: function(){
+			$(this).css({'box-shadow':'0px 0px 1px 1px #6c6c6c'});
+		}, 
+		mouseup: function(){
+			$(this).css({'box-shadow':'1px 1px 1px 1px #6c6c6c'});
+		}
+	});
+	
+	$send.click(function(e){
+		e.preventDefault;
+		var $user_email = $('#email').val();
+		if( $.trim($user_email)) {	
+			$.ajax({
+				url:'database.php',
+				data:{email:$user_email},
+				type:'POST',
+				success: function(){
+					//$('.sent').show('slow');
+					$('.sent').fadeIn(1000,'linear',function(){$('.mailDialog').fadeOut(7000);});
+					//$('.sent').fadeIn(1000).delay(3000).
+				}//success: function
+			});//ajax
+			$('.sent').css('opacity','1');
+		}//trim	
+	});//$send.click
+	
+	$emailField.keypress(function(e){
+	    if(e.which === 13) {
+			var $user_email = $('#email').val();
+			if( $.trim($user_email)) {	
+				$.ajax({
+					url:'database.php',
+					data:{email:$user_email},
+					type:'POST',
+					success: function(){
+						//$('.sent').show('slow');
+						$('.sent').fadeIn(1000,'linear',function(){$('.mailDialog').fadeOut(7000);});
+						//$('.sent').fadeIn(1000).delay(3000).
+					}//success: function
+				});//ajax
+				$('.sent').css('opacity','1');
+			}//trim	
+		}//e.wich
+	});//$send.enter
+}//mailbox
+mailBox();
+
+</script>
