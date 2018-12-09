@@ -1,0 +1,91 @@
+html {
+    height: 100%;
+}
+body {
+    height: 100%;
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+	background:url(../images/bg/resized/1.jpg) no-repeat;
+	background-color:#01100F;
+	background-size:cover;
+}
+.container {
+	border: 10px solid rgba(166,21,23,0.8);
+	position: absolute;
+	width: 1000px;
+	height: 400px;
+	left: 0px;
+	right: 0px;
+	top: 0px;
+	bottom: 0px;
+	margin: auto;
+}
+.accordion {
+    position: relative;
+    width: 1000px;
+    height: 400px;
+    margin: auto;
+    overflow:hidden;
+}
+div[class^='tab_'] {
+	box-shadow: -15px 0 15px -15px inset;
+	-webkit-box-box-shadow: -15px 0 15px -15px inset;
+	-moz-box-box-shadow: -15px 0 15px -15px inset;
+	float: left;
+	position: relative;
+	height:100%;
+	width: 57.14px;
+	cursor: url('http://www.portfoliosite.ml/accordion.ge/images/click1.png'),url('http://www.portfoliosite.ml/accordion.ge/images/click1.cur'), pointer;
+}
+
+.clearfix:after {
+	content:"";
+	display:block;
+	clear:both;
+}
+div.tab_1 {
+	width:600px;
+}
+
+img.img {
+    z-index: -1;
+    position: relative;
+    max-width: 100%;
+    min-width:600px;
+    height: 100%;
+}
+
+img[class$='_arrow'] {
+	padding: 3px;
+	transition-duration:0.5s;
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	margin: auto;
+	top: 0px;
+	bottom: 0px;
+	cursor:pointer;
+	opacity:0;
+}
+img.left_arrow {
+    left: 10px;
+}
+img.right_arrow {
+	right:10px;
+}
+
+
+
+img.bg {
+    /* transition-duration: 1s; */
+    position: absolute;
+    z-index: -5;
+    height: 100%;
+    width: 100%;
+    /* left: 0px; */
+    /* right: 0px; */
+    /* bottom: 0px; */
+    /* top: 0px; */
+}
+

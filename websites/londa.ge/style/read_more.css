@@ -1,0 +1,68 @@
+@font-face {
+    font-family: "PT Sans";
+    src: url("fonts/PTSansRegular-ext.woff") format("woff");
+}
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'PT Sans';
+}
+.read_box p {
+    font-size: 11px;
+    font-weight: normal;
+    color: #75787B;
+    margin-bottom: 12px;
+    padding-right: 10px;
+}
+.read_box p {
+-webkit-user-select: none;  /* Chrome all / Safari all */
+-moz-user-select: none;     /* Firefox all */
+-ms-user-select: none;      /* IE 10+ */
+user-select: none;          /* Likely future */
+-webkit-touch-callout: default   /* displays the callout */
+-webkit-touch-callout: none      /* disables the callout */
+    
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.read_head {
+    color: #AFB1B4;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #F76D6D;
+  border: 0px none #ffffff;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F76D6D;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #F76D6D;
+}
+::-webkit-scrollbar-track {
+  background: #38393C;
+  border: 0px none #ffffff;
+  border-radius: 0px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #38393C;
+}
+::-webkit-scrollbar-track:active {
+  background: #38393C;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
